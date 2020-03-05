@@ -10,14 +10,10 @@ export class PollEditor extends PureComponent {
   setPoll = poll => {
     const { componentData, store } = this.props;
 
-    store.update(
-      'componentData',
-      {
-        ...componentData,
-        poll,
-      },
-      this.props.block.getKey()
-    );
+    store.set('componentData', {
+      ...componentData,
+      poll,
+    });
   };
 
   isPluginFocused() {
@@ -28,12 +24,12 @@ export class PollEditor extends PureComponent {
   }
 
   render() {
-    const { componentData, setInPluginEditingMode } = this.props;
+    const { componentData, componentState, setInPluginEditingMode } = this.props;
 
     return (
       <RCEHelpersContext.Provider
         value={{
-          isViewMode: !this.isPluginFocused(),
+          isViewMode: componentState.isPreview || !this.isPluginFocused(),
           setInPluginEditingMode,
         }}
       >
@@ -50,6 +46,9 @@ export class PollEditor extends PureComponent {
 }
 
 PollEditor.propTypes = {
+  componentState: PropTypes.shape({
+    isPreview: PropTypes.bool,
+  }).isRequired,
   componentData: PropTypes.shape({
     poll: PropTypes.object,
     pollId: PropTypes.string,
@@ -60,6 +59,6 @@ PollEditor.propTypes = {
 
   setInPluginEditingMode: PropTypes.func.isRequired,
   store: PropTypes.shape({
-    update: PropTypes.func.isRequired,
+    set: PropTypes.func.isRequired,
   }).isRequired,
 };

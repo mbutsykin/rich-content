@@ -59,7 +59,7 @@ class TextFieldComponent extends React.PureComponent {
     this.$el.current.rows = this.state.rows;
 
     const contentHeight = scrollHeight - (paddingTop + paddingBottom);
-    const rows = clamp(contentHeight / lineHeight, 1, 10);
+    const rows = clamp(contentHeight / lineHeight, 1, Infinity);
 
     this.setState({ rows });
   }

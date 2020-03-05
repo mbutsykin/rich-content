@@ -32,6 +32,12 @@ export class PollContextProvider extends PureComponent {
       title,
     });
 
+  changePollImage = imageUrl =>
+    this.props.setPoll({
+      ...this.props.poll,
+      imageUrl,
+    });
+
   updatePollOption = (index, option) => {
     const { poll } = this.props;
 
@@ -71,6 +77,7 @@ export class PollContextProvider extends PureComponent {
           updatePollOption: this.updatePollOption,
           addOption: this.addOption,
           removeOption: this.removeOption,
+          changePollImage: this.changePollImage,
         }}
       >
         {children}

@@ -8,7 +8,6 @@
 }
 
 .list {
-  margin-top: 40px;
   list-style: none;
   padding: 0;
 }
@@ -28,8 +27,9 @@
   padding: 15px 24px;
   font-size: 18px;
   line-height: 1;
-
+  
   &:hover, &:focus {
+    outline: 0;
     opacity: 1;
   }
 }

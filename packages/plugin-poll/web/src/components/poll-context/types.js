@@ -19,6 +19,7 @@ export const PollPropTypes = {
 
 export const PollActionsPropTypes = {
   changePollTitle: PropTypes.func,
+  changePollImage: PropTypes.func,
   updatePollOption: PropTypes.func,
   addOption: PropTypes.func,
   removeOption: PropTypes.func,
